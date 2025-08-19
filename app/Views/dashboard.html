@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"> <!-- Spécifie l'encodage des caractères pour un rendu correct du texte -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Assure un design adaptatif pour les appareils mobiles -->
+    <title>GreenPath - Tableau de bord principal</title> <!-- Titre de la page affiché dans le navigateur -->
+    <style>
+        /* Style général du corps de la page pour une apparence cohérente */
+        body {
+            font-family: Arial, sans-serif;
+            /* Police propre et lisible */
+            margin: 0;
+            /* Supprime les marges par défaut */
+            padding: 0;
+            /* Supprime les paddings par défaut */
+            background-color: #f4f4f4;
+            /* Fond clair pour le contraste */
+            color: #333;
+            /* Couleur de texte sombre pour la lisibilité */
+        }
+
+        /* Style de l'en-tête pour le titre de l'application */
+        header {
+            background-color: #4CAF50;
+            /* Fond vert pour refléter la thématique agricole */
+            color: white;
+            /* Texte blanc pour le contraste */
+            padding: 15px;
+            /* Espacement interne */
+            text-align: center;
+            /* Alignement centré du titre */
+        }
+
+        /* Conteneur principal pour le contenu, centré avec une ombre pour la profondeur */
+        .container {
+            max-width: 1200px;
+            /* Largeur maximale pour les grands écrans */
+            margin: 20px auto;
+            /* Centre le conteneur avec des marges */
+            padding: 20px;
+            /* Espacement interne */
+            background-color: white;
+            /* Fond blanc pour le contenu */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Ombre subtile pour la profondeur */
+        }
+
+        /* Espacement des sections pour séparer les différentes parties du tableau de bord */
+        .section {
+            margin-bottom: 30px;
+            /* Espace entre les sections */
+        }
+
+        /* Disposition flexbox pour la section résumé (météo et alertes côte à côte) */
+        .summary {
+            display: flex;
+            /* Utilise flexbox pour la mise en page */
+            justify-content: space-between;
+            /* Répartit l'espace entre les éléments enfants */
+        }
+
+        /* Style du widget météo */
+        .weather {
+            flex: 1;
+            /* Occupe un espace égal dans le conteneur flex */
+            padding: 10px;
+            /* Espacement interne */
+            border: 1px solid #ddd;
+            /* Bordure légère pour délimiter */
+            margin-right: 10px;
+            /* Espace entre météo et alertes */
+            background-color: #e8f5e9;
+            /* Fond vert clair pour la météo */
+        }
+
+        /* Style du widget des alertes */
+        .alerts {
+            flex: 1;
+            /* Occupe un espace égal dans le conteneur flex */
+            padding: 10px;
+            /* Espacement interne */
+            border: 1px solid #ddd;
+            /* Bordure légère pour délimiter */
+            margin-right: 0;
+            /* Pas de marge à droite */
+            background-color: #fff3e0;
+            /* Fond orange clair pour les alertes */
+        }
+
+        /* Style de la liste des tâches */
+        .tasks ul {
+            list-style-type: none;
+            /* Supprime les puces par défaut */
+            padding: 0;
+            /* Supprime le padding par défaut */
+        }
+
+        /* Style des éléments individuels de la liste des tâches */
+        .tasks li {
+            padding: 10px;
+            /* Espacement pour chaque tâche */
+            border-bottom: 1px solid #ddd;
+            /* Ligne de séparation entre les tâches */
+        }
+
+        /* Style du bouton pour ajouter une tâche */
+        .add-task {
+            background-color: #4CAF50;
+            /* Bouton vert assorti à l'en-tête */
+            color: white;
+            /* Texte blanc pour le contraste */
+            border: none;
+            /* Supprime la bordure par défaut */
+            padding: 10px;
+            /* Espacement du bouton */
+            cursor: pointer;
+            /* Curseur en main au survol */
+            margin-top: 10px;
+            /* Espace au-dessus du bouton */
+        }
+
+        /* Effet de survol pour le bouton d'ajout de tâche */
+        .add-task:hover {
+            background-color: #45a049;
+            /* Vert légèrement plus foncé au survol */
+        }
+
+        /* Disposition flexbox pour la section des parcelles */
+        .parcelles {
+            display: flex;
+            /* Utilise flexbox pour la mise en page */
+            flex-wrap: wrap;
+            /* Permet le retour à la ligne pour les petits écrans */
+        }
+
+        /* Style des éléments individuels des parcelles */
+        .parcelle {
+            flex: 1 1 200px;
+            /* Largeur flexible, minimum 200px */
+            padding: 10px;
+            /* Espacement interne */
+            border: 1px solid #ddd;
+            /* Bordure légère pour délimiter */
+            margin: 5px;
+            /* Espace entre les éléments des parcelles */
+            background-color: #f1f8e9;
+            /* Fond vert clair pour les parcelles */
+            text-align: center;
+            /* Centre le texte */
+        }
+
+        /* Placeholder pour l'intégration future d'une carte */
+        #map-placeholder {
+            height: 200px;
+            /* Hauteur fixe pour le placeholder de la carte */
+            background-color: #ddd;
+            /* Fond gris pour le placeholder */
+            margin-top: 10px;
+            /* Espace au-dessus de la carte */
+            display: flex;
+            /* Centre le contenu dans le placeholder */
+            align-items: center;
+            /* Centrage vertical */
+            justify-content: center;
+            /* Centrage horizontal */
+            color: #666;
+            /* Texte gris pour le placeholder */
+        }
+    </style>
+</head>
+
+<body>
+    <!--barre de navigation-->
+      <nav>
+        <a href="dashboard.html">Accueil</a>
+        <a href="parcels.html">Parcelles</a>
+        <a href="tasks.html">Taches</a>
+        <a href="weather.html">Meteo</a>
+        <a href="alerts.html">Alertes</a>
+      </nav>
+
+    <!-- Conteneur principal du tableau de bord -->
+    <div class="container">
+        <h1>Tableau de Bord </h1>
+        <!-- Section résumé avec météo et alertes -->
+        <div class="section summary">
+            <div class="weather">
+                <h2>Météo Locale</h2>
+                <p>Température : 25°C</p> <!-- Données météo statiques pour la démo -->
+                <p>Précipitations : 0 mm (aujourd'hui)</p>
+            </div>
+            <div class="alerts">
+                <h2>Alertes</h2>
+                <ul id="alerts-list">
+                    <li>Irrigation urgente pour la parcelle 1</li> <!-- Exemple d'alerte -->
+                    <li>Risque de gel cette nuit</li> <!-- Exemple d'alerte -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section des tâches avec liste et bouton d'ajout -->
+        <div class="section tasks">
+            <h2>Liste des Tâches à Faire</h2>
+            <ul id="task-list">
+                <li>Arroser les cultures</li> <!-- Exemple de tâche -->
+                <li>Vérifier les engrais</li> <!-- Exemple de tâche -->
+                <li>Récolter les tomates</li> <!-- Exemple de tâche -->
+            </ul>
+            <button class="add-task" onclick="addTask()">Ajouter une tâche</button>
+            <!-- Bouton pour ajouter une tâche -->
+        </div>
+
+        <!-- Section des parcelles avec accès rapide et placeholder pour la carte -->
+        <div class="section parcelles">
+            <h2>Accès Rapide aux Parcelles</h2>
+            <div class="parcelle">Parcelle 1: Cultures de maïs</div> <!-- Exemple de parcelle -->
+            <div class="parcelle">Parcelle 2: Verger de pommes</div> <!-- Exemple de parcelle -->
+            <div class="parcelle">Parcelle 3: Champs de blé</div> <!-- Exemple de parcelle -->
+            <div id="map-placeholder">Carte des parcelles (Placeholder pour intégration carte)</div>
+            <!-- Placeholder pour la carte -->
+        </div>
+    </div>
+
+    <!-- Script JavaScript pour la fonctionnalité dynamique -->
+    <script>
+        // Fonction pour ajouter une nouvelle tâche à la liste
+        function addTask() {
+            const task = prompt("Entrez la nouvelle tâche :"); // Demande à l'utilisateur de saisir une tâche
+            if (task) { // Vérifie que l'entrée n'est pas vide
+                const list = document.getElementById("task-list"); // Récupère l'élément de la liste des tâches
+                const li = document.createElement("li"); // Crée un nouvel élément de liste
+                li.textContent = task; // Définit le texte de la tâche
+                list.appendChild(li); // Ajoute la tâche à la liste
+            }
+        }
+    </script>
+</body>
+
+</html>
