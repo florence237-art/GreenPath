@@ -1,0 +1,111 @@
+:root {
+            --primary-color: #198754;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffc107;
+        }
+        
+        body {
+            background: linear-gradient(to bottom right, #e8f5e9, #bbdefb);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .auth-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .auth-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .auth-form {
+            padding: 30px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0f6848;
+            border-color: #0f6848;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .divider::before {
+            margin-right: .5em;
+        }
+        
+        .divider::after {
+            margin-left: .5em;
+        }
+        
+        .auth-image {
+            background: linear-gradient(rgba(25, 135, 84, 0.7), rgba(25, 135, 84, 0.7));
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .auth-tabs .nav-link {
+            color: #495057;
+            padding: 12px 20px;
+            border-radius: 0;
+        }
+        
+        .auth-tabs .nav-link.active {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        
+        @media (max-width: 992px) {
+            .auth-image {
+                display: none;
+            }
+        }
